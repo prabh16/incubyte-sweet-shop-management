@@ -1,8 +1,12 @@
 const express = require("express");
 const router = express.Router();
-const {getAllSweets, addSweet} = require("../controllers/sweets.controller");
 
-router.get("/", getAllSweets);
-router.post("/", addSweet);
+const {
+  getSweets,
+  createSweet,
+} = require("../controllers/sweets.controller");
+
+router.get("/", getSweets);
+router.post("/", createSweet);
 
 module.exports = router;

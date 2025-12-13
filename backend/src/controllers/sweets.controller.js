@@ -1,7 +1,7 @@
-const mapSweetPayload = (body) => {
-  const { name, price } = body;
-  return { name, price };
-};
+const {
+  getAllSweets,
+  addSweet,
+} = require("../services/sweets.service");
 
 const sweetValidationRules = [
   {
@@ -19,22 +19,24 @@ const validateSweetInput = (payload) => {
   return null;
 };
 
-const getAllSweets = (req, res) => {
-  return res.status(200).json([]);
+const getSweets = (req, res) => {
+  const sweets = getAllSweets();
+  return res.status(200).json(sweets);
 };
 
-const addSweet = (req, res) => {
-  const payload = mapSweetPayload(req.body);
-  const error = validateSweetInput(payload);
+const createSweet = (req, res) => {
+  const { name, price } = req.body;
 
+  const error = validateSweetInput({ name, price });
   if (error) {
     return res.status(400).json({ message: error });
   }
 
-  return res.status(201).json({ message: "Sweet added" });
+  const sweet = addSweet({ name, price });
+  return res.status(201).json(sweet);
 };
 
-
 module.exports = {
-  getAllSweets, addSweet,
+  getSweets,
+  createSweet,
 };
