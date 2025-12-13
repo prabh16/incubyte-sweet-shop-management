@@ -2,7 +2,9 @@ const request = require("supertest");
 const app = require("../src/app");
 
 test("User registration works", async() => {
-    const res = (await request(app).post("/api/auth/register")).setEncoding({
+    const res = await request(app)
+    .post("/api/auth/register")
+    .send({
         email: "test@example.com",
         password: "100001",
     });
