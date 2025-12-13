@@ -13,7 +13,7 @@ const sweetValidationRules = [
     check: ({ price }) => price === undefined,
     message: "Price is required",
   },
-  
+
 ];
 
 const validateSweetInput = (payload) => {
@@ -31,14 +31,14 @@ const getSweets = (req, res) => {
 };
 
 const createSweet = (req, res) => {
-  const { name, price } = req.body;
+  const { name, category, price } = req.body;
 
   const error = validateSweetInput({ name, price });
   if (error) {
     return res.status(400).json({ message: error });
   }
 
-  const sweet = addSweet({ name, price });
+  const sweet = addSweet({ name, category, price });
   return res.status(201).json(sweet);
 };
 

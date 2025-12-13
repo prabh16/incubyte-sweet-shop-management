@@ -5,17 +5,18 @@ const getAllSweets = () => {
   return stmt.all();
 };
 
-const addSweet = ({ name, price, quantity = 0 }) => {
+const addSweet = ({ name, category, price, quantity = 0 }) => {
   const stmt = db.prepare(`
-    INSERT INTO sweets (name, price, quantity)
-    VALUES (?, ?, ?)
+    INSERT INTO sweets (name, category, price, quantity)
+    VALUES (?, ?, ?, ?)
   `);
 
-  const result = stmt.run(name, price, quantity);
+  const result = stmt.run(name, category, price, quantity);
 
   return {
     id: result.lastInsertRowid,
     name,
+    category,
     price,
     quantity,
   };

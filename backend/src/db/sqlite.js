@@ -14,4 +14,10 @@ db.prepare(`
   )
 `).run();
 
+try {
+  db.prepare(`ALTER TABLE sweets ADD COLUMN category TEXT`).run();
+} catch (err) {
+  // column already exists → ignore
+}
+
 module.exports = db;
