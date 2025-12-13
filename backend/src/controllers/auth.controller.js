@@ -1,14 +1,25 @@
-const validateRegisterInput = ({email,password}) =>{
-    if(!email){
-        return "Email is required";
-    }
+const registerValidationRules = [
+    {
+        check: ({email}) => !email,
+        message: "Email is required",
+    },
 
-    if(!password){
-        return "Password is required"; 
-    }
+    {
+        check: ({password}) => !password,
+        message: "Password is required",
+    },
 
-    if(password.length < 6){
-        return "Password must be at least 6 characters long";
+    {
+        check: ({password}) => password && password.length < 6,
+        message: "Password must be at least 6 characters long",
+    },
+];
+
+const validateRegisterInput = (body) =>{
+    for(const rule of registerValidationRules){
+        if(rule.check(body)){
+            return rule.message;
+        }
     }
 
     return null;
