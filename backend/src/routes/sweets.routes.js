@@ -1,8 +1,7 @@
 const express = require("express");
 const router = express.Router();
+const {getAllSweets} = require("../controllers/sweets.controller");
 
-router.get("/", (req, res) => {
-  return res.status(200).json([]);
-});
+router.get("/", getAllSweets);
 
 module.exports = router;
