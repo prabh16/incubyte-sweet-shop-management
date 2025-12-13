@@ -3,6 +3,10 @@ const validateRegisterInput = (body) =>{
         return "Email is required";
     }
 
+    if(!body.password){
+        return "Password is required";
+    }
+
     return null;
 };
 
