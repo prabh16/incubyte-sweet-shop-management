@@ -1,5 +1,11 @@
 const request = require("supertest");
 const app = require("../src/app");
+const db = require("../src/db/sqlite");
+
+beforeEach(() => {
+  db.prepare("DELETE FROM sweets").run();
+});
+
 
 test("Get all sweets returns empty array initially", async () => {
   const res = await request(app).get("/api/sweets");
