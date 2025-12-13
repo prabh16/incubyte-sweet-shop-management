@@ -8,3 +8,14 @@ test("Get all sweets returns empty array initially", async () => {
   expect(Array.isArray(res.body)).toBe(true);
   expect(res.body.length).toBe(0);
 });
+
+test("Add a sweet returns 201", async () => {
+  const res = await request(app)
+    .post("/api/sweets")
+    .send({
+      name: "Ladoo",
+      price: 10,
+    });
+
+  expect(res.statusCode).toBe(201);
+});
