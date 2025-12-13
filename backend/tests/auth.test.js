@@ -22,3 +22,14 @@ test("User registration fails when email is missing", async() =>{
 
     expect(res.statusCode).toBe(400);
 });
+
+
+test("User registration fails when password is missing", async() =>{
+    const res = await request(app)
+    .post("/api/auth/register")
+    .send({
+        email: "test@example.com",
+    });
+
+    expect(res.statusCode).toBe(400);
+});
