@@ -19,3 +19,13 @@ test("Add a sweet returns 201", async () => {
 
   expect(res.statusCode).toBe(201);
 });
+
+test("Add sweet fails when name is missing", async () => {
+  const res = await request(app)
+    .post("/api/sweets")
+    .send({
+      price: 10,
+    });
+
+  expect(res.statusCode).toBe(400);
+});
