@@ -8,6 +8,12 @@ const sweetValidationRules = [
     check: ({ name }) => !name,
     message: "Name is required",
   },
+
+  {
+    check: ({ price }) => price === undefined,
+    message: "Price is required",
+  },
+  
 ];
 
 const validateSweetInput = (payload) => {
