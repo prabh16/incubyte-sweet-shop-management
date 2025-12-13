@@ -8,7 +8,12 @@ const getAllSweets = (req, res) => {
 };
 
 const addSweet = (req, res) => {
-  mapSweetPayload(req.body);
+  const { name } = mapSweetPayload(req.body);
+
+  if (!name) {
+    return res.status(400).json({ message: "Name is required" });
+  }
+
   return res.status(201).json({ message: "Sweet added" });
 };
 
