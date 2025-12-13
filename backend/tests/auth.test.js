@@ -33,3 +33,14 @@ test("User registration fails when password is missing", async() =>{
 
     expect(res.statusCode).toBe(400);
 });
+
+test ("User registration fails when password is too short", async() =>{
+    const res = await request(app)
+    .post("/api/auth/register")
+    .send({
+        email: "test@example.com",
+        password: "100",
+    });
+
+    expect(res.statusCode).toBe(400);
+});
