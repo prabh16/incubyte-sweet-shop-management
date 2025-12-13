@@ -1,8 +1,7 @@
 const express = require("express");
 const router = express.Router();
+const {registerUser} = require("../controllers/auth.controller");
 
-router.post("/register", (req,res) =>{
-    return res.status(201).json({message: "User registered"});
-});
+router.post("/register", registerUser);
 
 module.exports = router;
