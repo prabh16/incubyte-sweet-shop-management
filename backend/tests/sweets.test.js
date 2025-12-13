@@ -29,3 +29,13 @@ test("Add sweet fails when name is missing", async () => {
 
   expect(res.statusCode).toBe(400);
 });
+
+test("Add sweet fails when price is missing", async () => {
+  const res = await request(app)
+    .post("/api/sweets")
+    .send({
+      name: "Jalebi"
+    });
+
+  expect(res.statusCode).toBe(400);
+});
