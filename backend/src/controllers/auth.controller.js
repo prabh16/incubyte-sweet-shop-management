@@ -1,10 +1,10 @@
-const validateRegisterInput = (body) =>{
-    if(!body.email){
+const validateRegisterInput = ({email,password}) =>{
+    if(!email){
         return "Email is required";
     }
 
-    if(!body.password){
-        return "Password is required";
+    if(!password){
+        return "Password is required"; 
     }
 
     return null;
