@@ -42,26 +42,30 @@ export default function Dashboard() {
   };
 
 const handleAdd = async () => {
+  if (!form.name || !form.price || form.quantity === "") {
+    alert("Name, price, and quantity are required");
+    return;
+  }
+
   try {
     await addSweet(
       {
         name: form.name,
         category: form.category,
         price: Number(form.price),
-        quantity: Number(form.quantity),
+        quantity: parseInt(form.quantity, 10),
       },
       token
     );
 
-    // reset form
     setForm({ name: "", category: "", price: "", quantity: "" });
-
-    await loadSweets(); // reload list
+    await loadSweets();
   } catch (err) {
     console.error("Add sweet failed", err);
     alert("Failed to add sweet");
   }
 };
+
 
 
   return (
