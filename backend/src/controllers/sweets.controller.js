@@ -36,14 +36,14 @@ const getSweets = (req, res) => {
 };
 
 const createSweet = (req, res) => {
-  const { name, category, price } = req.body;
+  const { name, category, price, quantity } = req.body;
 
   const error = validateSweetInput({ name, price });
   if (error) {
     return res.status(400).json({ message: error });
   }
 
-  const sweet = addSweet({ name, category, price });
+  const sweet = addSweet({ name, category, price, quantity });
   return res.status(201).json(sweet);
 };
 
