@@ -219,3 +219,14 @@ button:disabled {
   font-size: 14px;
   margin: 6px 0;
 }
+
+/* ===== Dashboard Card (Auth-style) ===== */
+
+.dashboard-card {
+  background: #ffffff;
+  width: 90%;
+  max-width: 1000px;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}

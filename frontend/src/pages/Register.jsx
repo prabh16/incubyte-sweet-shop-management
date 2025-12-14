@@ -17,21 +17,17 @@ const handleRegister = async () => {
   setLoading(true);
 
   try {
-    const res = await register(email, password);
-
-    if (res?.error) {
-      setError(res.error); // "Email already registered"
-      return;
-    }
+    await register(email, password);
 
     alert("Account created successfully. Please login.");
     onSwitchToLogin();
   } catch (err) {
-    setError(err.response?.data?.error || "Something went wrong");
+    setError(err.message || err.error || "Something went wrong");
   } finally {
     setLoading(false);
   }
 };
+
 
 
 

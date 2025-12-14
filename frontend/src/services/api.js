@@ -38,10 +38,20 @@ export const register = async (email, password) => {
 // ---------- SWEETS ----------
 export const getSweets = async (token) => {
   const res = await fetch(`${API_URL}/api/sweets`, {
-    headers: { Authorization: `Bearer ${token}` },
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
   });
-  return res.json();
+
+  const data = await res.json();
+
+  if (!res.ok) {
+    throw data;
+  }
+
+  return data;
 };
+
 
 export const searchSweets = async (query, token) => {
   const res = await fetch(
@@ -59,11 +69,18 @@ export const addSweet = async (sweet, token) => {
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
+      "x-admin": "true", 
     },
     body: JSON.stringify(sweet),
   });
-  return res.json();
+
+  const data = await res.json();
+  if (!res.ok) throw data;
+
+  return data;
 };
+
+
 
 export const updateSweet = async (id, sweet, token) => {
   const res = await fetch(`${API_URL}/api/sweets/${id}`, {
@@ -71,11 +88,17 @@ export const updateSweet = async (id, sweet, token) => {
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
+      "x-admin": "true", 
     },
     body: JSON.stringify(sweet),
   });
-  return res.json();
+
+  const data = await res.json();
+  if (!res.ok) throw data;
+
+  return data;
 };
+
 
 export const deleteSweet = async (id, token) => {
   const res = await fetch(`${API_URL}/api/sweets/${id}`, {
@@ -85,7 +108,10 @@ export const deleteSweet = async (id, token) => {
       "x-admin": "true", // minimal admin simulation
     },
   });
-  return res.json();
+  const data = await res.json();
+  if (!res.ok) throw data;
+
+  return data;
 };
 
 // ---------- INVENTORY ----------
@@ -94,7 +120,10 @@ export const purchaseSweet = async (id, token) => {
     method: "POST",
     headers: { Authorization: `Bearer ${token}` },
   });
-  return res.json();
+  const data = await res.json();
+  if (!res.ok) throw data;
+
+  return data;
 };
 
 export const restockSweet = async (id, quantity, token) => {
@@ -107,7 +136,10 @@ export const restockSweet = async (id, quantity, token) => {
     },
     body: JSON.stringify({ quantity }),
   });
-  return res.json();
+  const data = await res.json();
+  if (!res.ok) throw data;
+
+  return data;
 };
 
 // ---------- UTIL ----------

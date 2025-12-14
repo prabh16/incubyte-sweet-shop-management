@@ -4,12 +4,16 @@ import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 
 function App() {
-  useEffect(() => {
-    localStorage.removeItem("token");
-  }, []);
-
   const [loggedIn, setLoggedIn] = useState(false);
   const [showRegister, setShowRegister] = useState(false);
+
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      setLoggedIn(true);
+    }
+  }, []);
 
   if (loggedIn) {
     return <Dashboard />;

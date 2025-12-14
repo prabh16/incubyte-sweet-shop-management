@@ -7,24 +7,20 @@ export default function Login({ onLogin, onSwitchToRegister }) {
 
   const handleLogin = async () => {
   if (!email || !password) {
-    alert("Please enter both email and password");
+    alert("Email and password are required");
     return;
   }
 
   try {
     const data = await login(email, password);
 
-    if (!data.token) {
-      alert("Invalid email or password");
-      return;
-    }
-
     localStorage.setItem("token", data.token);
     onLogin();
   } catch (err) {
-    alert("Login failed. Please try again.");
+    alert(err.message || err.error || "Login failed");
   }
 };
+
 
 
   return (

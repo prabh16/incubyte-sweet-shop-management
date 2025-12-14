@@ -18,6 +18,7 @@ export default function Dashboard() {
   const [sweets, setSweets] = useState([]);
   const [search, setSearch] = useState("");
 
+
   // Admin form state
   const [form, setForm] = useState({
     name: "",
@@ -28,6 +29,7 @@ export default function Dashboard() {
 
   const loadSweets = async () => {
     const data = await getSweets(token);
+     console.log("🧁 SWEETS:", data);
     setSweets(data);
   };
 
@@ -59,6 +61,7 @@ const handleAdd = async () => {
     );
 
     setForm({ name: "", category: "", price: "", quantity: "" });
+    setSearch("");  
     await loadSweets();
   } catch (err) {
     console.error("Add sweet failed", err);
@@ -69,7 +72,8 @@ const handleAdd = async () => {
 
 
   return (
-  <div className="dashboard">
+  <div className="auth-bg">
+  <div className="dashboard-card">
 
     {/* Top Bar */}
     <div className="top-bar">
@@ -170,7 +174,8 @@ const handleAdd = async () => {
         </div>
       </div>
     ))}
-  </div>
+   </div>
+</div>
 );
 
 }
