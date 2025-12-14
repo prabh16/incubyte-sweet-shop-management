@@ -1,14 +1,122 @@
-body {
-  font-family: Arial, sans-serif;
-  padding: 20px;
+/* ---------- Dashboard Layout ---------- */
+
+.dashboard {
+  max-width: 900px;
+  margin: 40px auto;
+  background: #ffffff;
+  padding: 20px 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-input,
-button {
-  margin: 4px;
-  padding: 6px;
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
 }
 
+h3 {
+  margin-top: 30px;
+}
+
+/* ---------- Inputs ---------- */
+
+input {
+  padding: 8px 10px;
+  margin: 6px 6px 6px 0;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+/* ---------- Buttons ---------- */
+
 button {
+  padding: 8px 14px;
+  margin: 6px 6px 6px 0;
+  border: none;
+  border-radius: 4px;
   cursor: pointer;
+  background-color: #1976d2;
+  color: white;
+}
+
+button:hover {
+  background-color: #125aa0;
+}
+
+button:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
+}
+
+/* ---------- Sweet Card ---------- */
+
+.sweet-card {
+  border: 1px solid #ddd;
+  padding: 12px;
+  margin-bottom: 12px;
+  border-radius: 6px;
+  background: #fafafa;
+}
+
+/* ---------- Special Buttons ---------- */
+
+.admin-btn {
+  background-color: #d32f2f;
+}
+
+.admin-btn:hover {
+  background-color: #a32020;
+}
+
+.logout-btn {
+  float: right;
+  background-color: #555;
+}
+
+
+/* ---------- Top Actions ---------- */
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ---------- Search ---------- */
+
+.search-box {
+  margin: 15px 0;
+}
+
+.search-box input {
+  width: 100%;
+  max-width: 300px;
+}
+
+/* ---------- Add Sweet Form ---------- */
+
+.add-sweet-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.add-sweet-form input {
+  flex: 1;
+  min-width: 150px;
+}
+
+/* ---------- Sweet Card ---------- */
+
+.sweet-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sweet-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
 }

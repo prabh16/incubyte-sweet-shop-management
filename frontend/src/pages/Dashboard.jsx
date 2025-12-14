@@ -69,29 +69,34 @@ const handleAdd = async () => {
 
 
   return (
-    <div>
+  <div className="dashboard">
+
+    {/* Top Bar */}
+    <div className="top-bar">
       <h2>Sweet Shop Dashboard</h2>
-
-            <button
+      <button
+        className="logout-btn"
         onClick={() => {
-            logout();
-            window.location.reload();
+          logout();
+          window.location.reload();
         }}
-        >
+      >
         Logout
-        </button>
+      </button>
+    </div>
 
-      {/* Search */}
-      <div>
-        <input
-          placeholder="Search sweets"
-          value={search}
-          onChange={(e) => handleSearch(e.target.value)}
-        />
-      </div>
+    {/* Search */}
+    <div className="search-box">
+      <input
+        placeholder="Search sweets"
+        value={search}
+        onChange={(e) => handleSearch(e.target.value)}
+      />
+    </div>
 
-      {/* Admin Add Sweet */}
-      <h3>Add Sweet (Admin)</h3>
+    {/* Admin Add Sweet */}
+    <h3>Add Sweet (Admin)</h3>
+    <div className="add-sweet-form">
       <input
         placeholder="Name"
         value={form.name}
@@ -115,18 +120,18 @@ const handleAdd = async () => {
         onChange={(e) => setForm({ ...form, quantity: e.target.value })}
       />
       <button onClick={handleAdd}>Add Sweet</button>
+    </div>
 
-      <hr />
+    <hr />
 
-      {/* Sweets List */}
-      {Array.isArray(sweets) && sweets.map((s) => (
-        <div key={s.id} style={{ marginBottom: "10px" }}>
-          <strong>{s.name}</strong> ({s.category}) – ₹{s.price}  
-          <br />
-          Quantity: {s.quantity}
+    {/* Sweets List */}
+    {Array.isArray(sweets) && sweets.map((s) => (
+      <div key={s.id} className="sweet-card">
+        <strong>{s.name}</strong> ({s.category}) – ₹{s.price}
+        <br />
+        Quantity: {s.quantity}
 
-          <br />
-
+        <div className="sweet-actions">
           <button
             disabled={s.quantity === 0}
             onClick={() => purchaseSweet(s.id, token).then(loadSweets)}
@@ -135,6 +140,7 @@ const handleAdd = async () => {
           </button>
 
           <button
+            className="admin-btn"
             onClick={() =>
               restockSweet(s.id, 5, token).then(loadSweets)
             }
@@ -143,24 +149,28 @@ const handleAdd = async () => {
           </button>
 
           <button
+            className="admin-btn"
             onClick={() => deleteSweet(s.id, token).then(loadSweets)}
           >
             Delete (Admin)
           </button>
 
           <button
+            className="admin-btn"
             onClick={() =>
-                updateSweet(
+              updateSweet(
                 s.id,
                 { price: s.price + 5 },
                 token
-                ).then(loadSweets)
+              ).then(loadSweets)
             }
-            >
+          >
             Increase Price +5 (Admin)
-            </button>
+          </button>
         </div>
-      ))}
-    </div>
-  );
+      </div>
+    ))}
+  </div>
+);
+
 }
