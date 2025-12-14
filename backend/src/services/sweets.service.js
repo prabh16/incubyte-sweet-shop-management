@@ -54,11 +54,14 @@ const updateSweet = (id, data) => {
 
   db.prepare(`
     UPDATE sweets
-    SET name = ?, category = ?, price = ?, quantity = ?
+    SET
+      name = COALESCE(?, name),
+      category = COALESCE(?, category),
+      price = COALESCE(?, price),
+      quantity = COALESCE(?, quantity)
     WHERE id = ?
   `).run(name, category, price, quantity, id);
 };
-
 const deleteSweet = (id) => {
   db.prepare("DELETE FROM sweets WHERE id = ?").run(id);
 };
