@@ -50,6 +50,7 @@ JSON Web Tokens (JWT)
 
 
 📂 Project Structure
+```
 
 incubyte-sweet-shop-management/
 │
@@ -73,7 +74,7 @@ incubyte-sweet-shop-management/
 │   │   └── main.jsx
 │
 └── README.md
-
+```
 
 ⚙️ Setup & Run Locally
 🔹 Prerequisites
