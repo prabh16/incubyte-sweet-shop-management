@@ -55,23 +55,23 @@ JSON Web Tokens (JWT)
 incubyte-sweet-shop-management/
 │
 ├── backend/
-│   ├── src/
-│   │   ├── controllers/
-│   │   ├── routes/
-│   │   ├── services/
-│   │   ├── middlewares/
-│   │   ├── db/
-│   │   ├── utils/
-│   │   ├── app.js
-│   │   └── server.js
+│ ├── src/
+│ │ ├── controllers/
+│ │ ├── routes/
+│ │ ├── services/
+│ │ ├── middlewares/
+│ │ ├── db/
+│ │ ├── utils/
+│ │ ├── app.js
+│ │ └── server.js
 │
 ├── frontend/
-│   ├── src/
-│   │   ├── pages/
-│   │   ├── services/
-│   │   ├── index.css
-│   │   ├── App.jsx
-│   │   └── main.jsx
+│ ├── src/
+│ │ ├── pages/
+│ │ ├── services/
+│ │ ├── index.css
+│ │ ├── App.jsx
+│ │ └── main.jsx
 │
 └── README.md
 ```
