@@ -7,8 +7,16 @@ export const login = async (email, password) => {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ email, password }),
   });
-  return res.json();
+
+  const data = await res.json();
+
+  if (!res.ok) {
+    throw data;
+  }
+
+  return data;
 };
+
 
 export const register = async (email, password) => {
   const res = await fetch(`${API_URL}/api/auth/register`, {
@@ -16,8 +24,16 @@ export const register = async (email, password) => {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ email, password }),
   });
-  return res.json();
+
+  const data = await res.json();
+
+  if (!res.ok) {
+    throw data; // 👈 this makes 409 reach catch()
+  }
+
+  return data;
 };
+
 
 // ---------- SWEETS ----------
 export const getSweets = async (token) => {
