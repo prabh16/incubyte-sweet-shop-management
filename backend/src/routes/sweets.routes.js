@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 
 const authMiddleware = require("../middlewares/auth.middleware");
+const adminMiddleware = require("../middlewares/admin.middleware");
+
 const {
   getSweets,
   createSweet,
@@ -11,16 +13,16 @@ const {
   purchaseSweetById,
   restockSweetById,
 } = require("../controllers/sweets.controller");
-const adminMiddleware = require("../middlewares/admin.middleware");
 
+// ✅ NORMAL AUTH (ANY LOGGED-IN USER)
 router.get("/", authMiddleware, getSweets);
-router.post("/", authMiddleware, adminMiddleware, createSweet);
-
 router.get("/search", authMiddleware, searchSweets);
+router.post("/:id/purchase", authMiddleware, purchaseSweetById);
+
+// ✅ ADMIN ONLY
+router.post("/", authMiddleware, adminMiddleware, createSweet);
 router.put("/:id", authMiddleware, adminMiddleware, updateSweetById);
 router.delete("/:id", authMiddleware, adminMiddleware, deleteSweetById);
-
-router.post("/:id/purchase", authMiddleware, purchaseSweetById);
 router.post("/:id/restock", authMiddleware, adminMiddleware, restockSweetById);
 
 module.exports = router;
